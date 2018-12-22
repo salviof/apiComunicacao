@@ -2,24 +2,23 @@
  *  Desenvolvido pela equipe Super-Bits.com CNPJ 20.019.971/0001-90
 
  */
-package erp.comunicacao.transporte;
+package br.org.coletivojava.erp.comunicacao.transporte;
 
-import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import erp.comunicacao.transporte.ItfDisparoComunicacao;
-import com.super_bits.modulosSB.SBCore.modulos.comunicacao.FabTipoComunicacao;
-import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfDestinatario;
+import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfDisparoComunicacao;
 import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfTipoTransporteComunicacao;
 import com.super_bits.modulosSB.SBCore.modulos.comunicacao.TipoTransporteSBNativo;
-import erp.ItfApiErpSuperBits;
 
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoDaFabrica;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.erp.ApiERPColetivoJavaFW;
+import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItffabricaTrasporteComunicacao;
+import org.coletivojava.fw.utilCoreBase.UtilSBCoreReflexaoAPIERP;
 
 /**
  *
  * @author desenvolvedor
  */
-public enum FabTipoTransporteComunicacao implements ItfApiErpSuperBits<ItfDisparoComunicacao> {
+@ApiERPColetivoJavaFW(descricaoApi = "Apis de trasnporte de comunicação", nomeApi = "TransporteComunicacao", slugInicial = "MsgDisparo")
+public enum ERPTransporteComunicacao implements ItffabricaTrasporteComunicacao<ItfDisparoComunicacao> {
 
     @InfoObjetoDaFabrica(nomeObjeto = "E-mail", classeObjeto = TipoTransporteSBNativo.class)
     EMAIL,
@@ -33,6 +32,8 @@ public enum FabTipoTransporteComunicacao implements ItfApiErpSuperBits<ItfDispar
     API_PERSONALIZADA,
     @InfoObjetoDaFabrica(nomeObjeto = "Whatzup", classeObjeto = TipoTransporteSBNativo.class)
     WHATZAUP,
+    @InfoObjetoDaFabrica(nomeObjeto = "Mobile", classeObjeto = TipoTransporteSBNativo.class)
+    MOBILE,
     /**
      * O Modo automático se vira para encontrar o usuário, exemplo: se tiver uma
      * sessao do usuário conectada envia via modal, se não encontrar, tenta
@@ -43,19 +44,13 @@ public enum FabTipoTransporteComunicacao implements ItfApiErpSuperBits<ItfDispar
 
     @Override
     public ItfTipoTransporteComunicacao getRegistro() {
-        return (ItfTipoTransporteComunicacao) ItfApiErpSuperBits.super.getRegistro();
+        return (ItfTipoTransporteComunicacao) ItffabricaTrasporteComunicacao.super.getRegistro();
 
     }
 
-    @Deprecated
-    public void enviarMensagemEntreUsuarios(ItfUsuario pRemetente, ItfDestinatario pDestinatario, String mensagem) {
-        SBCore.getCentralComunicacao().gerarComunicacaoEntre_Usuairos(FabTipoComunicacao.NOTIFICAR, pRemetente, pDestinatario, mensagem, this);
-
-    }
-
-    @Deprecated
-    public void enviarMensagemDoSistemaParaDestinatario(ItfDestinatario pDestinatario, String mensagem) {
-        SBCore.getCentralComunicacao().gerarComunicacaoEntre_Usuairos(FabTipoComunicacao.NOTIFICAR, new UsuarioSistemaRoot(), pDestinatario, mensagem, this);
+    @Override
+    public ItfDisparoComunicacao getImplementacaoDoContexto() {
+        return (ItfDisparoComunicacao) UtilSBCoreReflexaoAPIERP.getImplementacaoDoContexto(this);
     }
 
     @Override

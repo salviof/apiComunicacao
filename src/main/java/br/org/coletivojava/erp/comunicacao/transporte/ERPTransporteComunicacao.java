@@ -30,7 +30,7 @@ public enum ERPTransporteComunicacao implements ItffabricaTrasporteComunicacao<I
     INTRANET_MODAL,
     @InfoObjetoDaFabrica(nomeObjeto = "Api Personalizada", classeObjeto = TipoTransporteSBNativo.class)
     API_PERSONALIZADA,
-    @InfoObjetoDaFabrica(nomeObjeto = "Whatzup", classeObjeto = TipoTransporteSBNativo.class)
+    @InfoObjetoDaFabrica(nomeObjeto = "Whatszup", classeObjeto = TipoTransporteSBNativo.class)
     WHATZAUP,
     @InfoObjetoDaFabrica(nomeObjeto = "Mobile", classeObjeto = TipoTransporteSBNativo.class)
     MOBILE,

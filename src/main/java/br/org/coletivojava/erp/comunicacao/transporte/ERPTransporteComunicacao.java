@@ -32,6 +32,8 @@ public enum ERPTransporteComunicacao implements ItffabricaTrasporteComunicacao<I
     API_PERSONALIZADA,
     @InfoObjetoDaFabrica(nomeObjeto = "Whatszup", classeObjeto = TipoTransporteSBNativo.class)
     WHATZAUP,
+    @InfoObjetoDaFabrica(nomeObjeto = "Matrix", classeObjeto = TipoTransporteSBNativo.class)
+    MATRIX,
     @InfoObjetoDaFabrica(nomeObjeto = "Mobile", classeObjeto = TipoTransporteSBNativo.class)
     MOBILE,
     /**
@@ -57,6 +59,10 @@ public enum ERPTransporteComunicacao implements ItffabricaTrasporteComunicacao<I
     public Class getInterface() {
         return ItfDisparoComunicacao.class;
 
+    }
+
+    public boolean isTipoTransporteImplementado() {
+        return UtilSBCoreReflexaoAPIERP.isClasseImplementadaNoContexto(this);
     }
 
 }

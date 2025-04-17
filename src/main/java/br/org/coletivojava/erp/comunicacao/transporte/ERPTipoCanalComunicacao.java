@@ -5,20 +5,20 @@
 package br.org.coletivojava.erp.comunicacao.transporte;
 
 import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfDisparoComunicacao;
-import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfTipoTransporteComunicacao;
 import com.super_bits.modulosSB.SBCore.modulos.comunicacao.TipoTransporteSBNativo;
 
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoDaFabrica;
 import com.super_bits.modulosSB.SBCore.modulos.erp.ApiERPColetivoJavaFW;
-import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItffabricaTrasporteComunicacao;
 import org.coletivojava.fw.utilCoreBase.UtilSBCoreReflexaoAPIERP;
+import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItffabricaCanalComunicacao;
+import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfTipoCanalComunicacao;
 
 /**
  *
  * @author desenvolvedor
  */
-@ApiERPColetivoJavaFW(descricaoApi = "Apis de trasnporte de comunicação", nomeApi = "TransporteComunicacao", slugInicial = "MsgDisparo")
-public enum ERPTransporteComunicacao implements ItffabricaTrasporteComunicacao<ItfDisparoComunicacao> {
+@ApiERPColetivoJavaFW(descricaoApi = "Apis de mídia de comunicação", nomeApi = "TransporteComunicacao", slugInicial = "MsgDisparo")
+public enum ERPTipoCanalComunicacao implements ItffabricaCanalComunicacao<ItfDisparoComunicacao> {
 
     @InfoObjetoDaFabrica(nomeObjeto = "E-mail", classeObjeto = TipoTransporteSBNativo.class)
     EMAIL,
@@ -27,7 +27,7 @@ public enum ERPTransporteComunicacao implements ItffabricaTrasporteComunicacao<I
     @InfoObjetoDaFabrica(nomeObjeto = "Menu Intranet", classeObjeto = TipoTransporteSBNativo.class)
     INTRANET_MENU,
     @InfoObjetoDaFabrica(nomeObjeto = "Intranet Modal", classeObjeto = TipoTransporteSBNativo.class)
-    INTRANET_MODAL,
+    INTRANET_BLOQUEIO_TELA,
     @InfoObjetoDaFabrica(nomeObjeto = "Api Personalizada", classeObjeto = TipoTransporteSBNativo.class)
     API_PERSONALIZADA,
     @InfoObjetoDaFabrica(nomeObjeto = "Whatszup", classeObjeto = TipoTransporteSBNativo.class)
@@ -45,8 +45,8 @@ public enum ERPTransporteComunicacao implements ItffabricaTrasporteComunicacao<I
     AUTOMATICO;
 
     @Override
-    public ItfTipoTransporteComunicacao getRegistro() {
-        return (ItfTipoTransporteComunicacao) ItffabricaTrasporteComunicacao.super.getRegistro();
+    public ItfTipoCanalComunicacao getRegistro() {
+        return (ItfTipoCanalComunicacao) ItffabricaCanalComunicacao.super.getRegistro();
 
     }
 

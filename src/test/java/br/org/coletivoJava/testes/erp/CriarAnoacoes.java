@@ -5,7 +5,7 @@
  */
 package br.org.coletivoJava.testes.erp;
 
-import br.org.coletivojava.erp.comunicacao.transporte.ERPTransporteComunicacao;
+import br.org.coletivojava.erp.comunicacao.transporte.ERPTipoCanalComunicacao;
 import org.apache.logging.log4j.LogManager;
 import org.coletivojava.fw.api.objetoNativo.log.LogPadraoSB;
 
@@ -22,7 +22,7 @@ public class CriarAnoacoes {
 
         try {
 
-            for (ERPTransporteComunicacao trassp : ERPTransporteComunicacao.values()) {
+            for (ERPTipoCanalComunicacao trassp : ERPTipoCanalComunicacao.values()) {
                 //GeradorAPIERP gerador = new GeradorAPIERP(trassp);
                 //gerador.salvarEmDiretorioPadraoSubstituindoAnterior();
             }

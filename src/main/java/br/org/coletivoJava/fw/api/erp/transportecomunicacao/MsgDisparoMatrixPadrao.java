@@ -15,5 +15,5 @@ import java.lang.annotation.ElementType;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface MsgDisparoApiPersonalizada {
+public @interface MsgDisparoMatrixPadrao {
 }

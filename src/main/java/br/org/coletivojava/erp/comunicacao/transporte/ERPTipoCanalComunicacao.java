@@ -9,7 +9,7 @@ import com.super_bits.modulosSB.SBCore.modulos.comunicacao.TipoTransporteSBNativ
 
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoDaFabrica;
 import com.super_bits.modulosSB.SBCore.modulos.erp.ApiERPColetivoJavaFW;
-import org.coletivojava.fw.utilCoreBase.UtilSBCoreReflexaoAPIERP;
+import org.coletivojava.fw.utilCoreBase.UtilCRCReflexaoAPIERP;
 import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItffabricaCanalComunicacao;
 import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfTipoCanalComunicacao;
 
@@ -52,7 +52,7 @@ public enum ERPTipoCanalComunicacao implements ItffabricaCanalComunicacao<ItfDis
 
     @Override
     public ItfDisparoComunicacao getImplementacaoDoContexto() {
-        return (ItfDisparoComunicacao) UtilSBCoreReflexaoAPIERP.getImplementacaoDoContexto(this);
+        return (ItfDisparoComunicacao) UtilCRCReflexaoAPIERP.getImplementacaoDoContexto(this);
     }
 
     @Override
@@ -62,7 +62,7 @@ public enum ERPTipoCanalComunicacao implements ItffabricaCanalComunicacao<ItfDis
     }
 
     public boolean isTipoTransporteImplementado() {
-        return UtilSBCoreReflexaoAPIERP.isClasseImplementadaNoContexto(this);
+        return UtilCRCReflexaoAPIERP.isClasseImplementadaNoContexto(this);
     }
 
 }
